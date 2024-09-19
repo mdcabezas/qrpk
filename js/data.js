@@ -14,5 +14,5 @@ export const data = {
   YR9375: { cng: c[1], rol: r[1] },
   JKGT75: { cng: c[6], rol: r[1] },
   CC4689: { cng: c[7], rol: r[1] },
-  LKVZ39: { cng: c[2], rol: r[2]  }
+  LKVZ39: { cng: c[2], rol: r[2] }
 }

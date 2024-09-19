@@ -1,4 +1,4 @@
-import { data } from './data.js';
+import { data } from '.js/data.js';
 const $resultContainer = document.getElementById('qr-reader-results');
 let lastResult, countResults = 0;
 
@@ -8,12 +8,12 @@ function onScanSuccess(decodedText, decodedResult) {
         lastResult = decodedText;
         let exist = data[decodedText]
         if (exist){
-            $resultContainer.innerHTML  = `<p>¡VÁLIDO! &#128512</p>
+            $resultContainer.innerHTML  = `<p>&#128512 ¡VÁLIDO!</p>
                                            <p>Patente: ${decodedText}</p>
                                            <p>Congregación: ${exist.cng}</p>
                                            <p>Acceso: ${exist.rol}</p>`
         } else {
-            $resultContainer.innerHTML  = '<p>NO HABILITADO &#128512</p>'
+            $resultContainer.innerHTML  = '<p>&#128532 NO HABILITADO</p>'
         }
     }
 }
