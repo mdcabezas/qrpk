@@ -1,3 +1,4 @@
+import { data } from './data.js';
 const $resultContainer = document.getElementById('qr-reader-results');
 let lastResult, countResults = 0;
 
@@ -5,9 +6,14 @@ function onScanSuccess(decodedText, decodedResult) {
     if (decodedText !== lastResult) {
         ++countResults;
         lastResult = decodedText;
-        // Handle on success condition with the decoded message.
-        console.log(`Scan result ${decodedText}`, decodedResult);
-        $resultContainer.innerHTML  = `¿ Qué se teje ?: <br>${decodedText}<br>`
+         console.log('decodedText', decodedText);
+         console.log('decodedResult', decodedResult);
+         console.log('data[decodedText]', data[decodedText]);
+        if (data[decodedText]){
+            $resultContainer.innerHTML  = 'VALIDO'
+        } else {
+            $resultContainer.innerHTML  = 'NO HABILITADO'
+        }
     }
 }
 
