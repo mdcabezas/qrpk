@@ -6,13 +6,14 @@ function onScanSuccess(decodedText, decodedResult) {
     if (decodedText !== lastResult) {
         ++countResults;
         lastResult = decodedText;
-         console.log('decodedText', decodedText);
-         console.log('decodedResult', decodedResult);
-         console.log('data[decodedText]', data[decodedText]);
-        if (data[decodedText]){
-            $resultContainer.innerHTML  = 'VALIDO'
+        let exist = data[decodedText]
+        if (exist){
+            $resultContainer.innerHTML  = `<p>¡VÁLIDO! &#128512</p>
+                                           <p>Patente: ${decodedText}</p>
+                                           <p>Congregación: ${exist.cng}</p>
+                                           <p>Acceso: ${exist.rol}</p>`
         } else {
-            $resultContainer.innerHTML  = 'NO HABILITADO'
+            $resultContainer.innerHTML  = '<p>NO HABILITADO &#128512</p>'
         }
     }
 }
