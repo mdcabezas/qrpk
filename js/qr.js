@@ -24,7 +24,7 @@ function onScanSuccess(decodedText, decodedResult) {
                                                  <td>${exist.rol}</td>
                                                 </tr>
                                               </tbody>
-                                            </table>
+                                            </table>`
         } else {
             $resultContainer.innerHTML  = '<p>&#128532 <span class="badge text-bg-danger">NO HABILITADO</span></p>'
         }
