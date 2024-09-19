@@ -1,5 +1,5 @@
 import { data } from './data.js';
-const $resultContainer = document.getElementById('qr-reader-results');
+const $resultContainer = document.getElementById('results');
 let lastResult, countResults = 0;
 
 function onScanSuccess(decodedText, decodedResult) {
@@ -32,6 +32,18 @@ function onScanSuccess(decodedText, decodedResult) {
     }
 }
 
+let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
+    let minEdgePercentage = 0.7; // 70%
+    let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
+    let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
+    return {
+        width: qrboxSize,
+        height: qrboxSize
+    };
+}
+
 const html5QrcodeScanner = new Html5QrcodeScanner(
-    "qr-reader", { fps: 10, qrbox: 250 });
+    "reader",
+    { fps: 10, qrbox: qrboxFunction },
+     /* verbose= */ false );
 html5QrcodeScanner.render(onScanSuccess);
