@@ -1,4 +1,4 @@
-import { data } from '.js/data.js';
+import { data } from './js/data.js';
 const $resultContainer = document.getElementById('qr-reader-results');
 let lastResult, countResults = 0;
 
