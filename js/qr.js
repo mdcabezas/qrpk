@@ -10,9 +10,9 @@ function onScanSuccess(decodedText, decodedResult) {
         let exist = data[decodedText]
         if (exist){
             $resultContainer.innerHTML  = `<p class="text-center">&#128512 <span class="badge text-bg-success">¡VÁLIDO!</span> &#128512</p>
-                                            <table class="table table-success table-sm">
+                                            <table class="table table-sm">
                                               <thead>
-                                                <tr class="text-center">
+                                                <tr class="text-center table-success">
                                                 <th scope="col">Patente</th>
                                                 <th scope="col">Congregación</th>
                                                 <th scope="col">Acceso</th>
@@ -42,8 +42,14 @@ let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
     };
 }
 
+let config = {
+    fps: 10,
+    qrbox: qrboxFunction,
+    rememberLastUsedCamera: true,
+    // Only support camera scan type.
+    supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
+  };
+
 const html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader",
-    { fps: 10, qrbox: qrboxFunction },
-     /* verbose= */ false );
+    "reader", config, /* verbose= */ false );
 html5QrcodeScanner.render(onScanSuccess);
