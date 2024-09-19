@@ -9,18 +9,18 @@ function onScanSuccess(decodedText, decodedResult) {
         lastResult = decodedText;
         let exist = data[decodedText]
         if (exist){
-            $resultContainer.innerHTML  = `<p>&#128512 <span class="badge text-bg-success">¡VÁLIDO!</span> &#128512</p>
-                                            <table class="table">
+            $resultContainer.innerHTML  = `<p class="text-center">&#128512 <span class="badge text-bg-success">¡VÁLIDO!</span> &#128512</p>
+                                            <table class="table-success">
                                               <thead>
-                                                <tr>
+                                                <tr class="text-center">
                                                 <th scope="col">Patente</th>
                                                 <th scope="col">Congregación</th>
                                                 <th scope="col">Acceso</th>
                                                 </tr>
                                               </thead>
                                               <tbody>
-                                                <tr class="table-success">
-                                                 <td>${decodedText}</td>
+                                                <tr class="text-center">
+                                                 <th scope="row">${decodedText}</th>
                                                  <td>${exist.cng}</td>
                                                  <td>${exist.rol}</td>
                                                 </tr>
