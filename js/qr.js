@@ -10,7 +10,7 @@ function onScanSuccess(decodedText, decodedResult) {
         let exist = data[decodedText]
         if (exist){
             $resultContainer.innerHTML  = `<p class="text-center">&#128512 <span class="badge text-bg-success">¡VÁLIDO!</span> &#128512</p>
-                                            <table class="table-success">
+                                            <table class="table table-success table-sm">
                                               <thead>
                                                 <tr class="text-center">
                                                 <th scope="col">Patente</th>
