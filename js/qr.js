@@ -27,7 +27,7 @@ function onScanSuccess(decodedText, decodedResult) {
                                               </tbody>
                                             </table>`
         } else {
-            $resultContainer.innerHTML  = '<p class="text-center my-auto">&#128532 <span class="badge text-bg-danger">NO HABILITADO</span> &#128532</p>'
+            $resultContainer.innerHTML  = '<p class="text-center mt-3">&#128532 <span class="badge text-bg-danger">NO HABILITADO</span> &#128532</p>'
         }
     }
 }
