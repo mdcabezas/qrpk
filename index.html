@@ -1,25 +1,91 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://unpkg.com/html5-qrcode" defer></script>
-    <title>QR</title>
-    <script src="./js/data.js" type="module" defer></script>
-    <script src="./js/qr.js" type="module" defer></script>
+    <title>Estacionamiento | Asamblea Regional Curico 2024</title>
+   
     <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
 </head>
 <body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Estacionamiento | Asamblea Regional Curico 2024</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main class="inicio">
+    <section class="container text-center">
+        <div class="card">
+            <img src="/images/estacionamiento.png" class="qr" alt="...">
+            <div class="card-body">
+                <p class="card-text">Verificar con código QR que patente está registrada y autorizada para estacionamiento.</p>
+                <a href="#" class="btn btn-primary" id="search-qr">Buscar por QR</a>
+
+            </div>
+        </div>
+        
+        <div class="card">
+            <img src="/images/patente.png" class="patente" alt="...">
+            <div class="card-body">
+                <p class="card-text">Verificar con ingreso manual que patente está registrada y autorizada para estacionamiento.</p>
+                <a href="#" class="btn btn-primary" id="search-manual">Buscar por patente</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<section class="busqueda-qr hidden">
   <div class="container">
     <div id="reader"></div>
-    <div>
-      <input type="text" id="manualCodeInput" placeholder="Ingrese Patente" />
-      <button id="submitManualCode">Verificar</button>
-  </div>
     <div id="results"></div>
   </div>
-  
+</section>
 
+<section class="busqueda-manual hidden">
+    <div class="container">
+        <div class="input-group">
+            <input type="text" id="manualCodeInput" class="form-control" placeholder="Ingrese Patente manualmente" aria-label="Ingrese Patente" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-success" id="submitManualCode" type="button">Verificar</button>
+                <button class="btn btn-secondary" id="clearButton" type="button" onclick="clearInput()">Limpiar</button>
+            </div>
+        </div>
+        <div id="results"></div>
+    </div>
+</section>
+
+<footer>
+    <p>
+        Esta aplicación no es comercial. Su uso es único y exclusivo para el departamento de estacionamiento de Asamblea Regional 2024. No registra información ni almacena imágenes.
+    </p>
+</footer>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/data.js" type="module" defer></script>
+    <script src="./js/qr.js" type="module" defer></script>
 
 </body>
 </html>

@@ -4,6 +4,31 @@ const $resultContainer = document.getElementById('results');
 const $manualCodeInput = document.getElementById('manualCodeInput');
 const $submitManualCode = document.getElementById('submitManualCode');
 let lastResult, countResults = 0;
+const $input = document.getElementById('clearButton').addEventListener('click', clearInput);
+
+
+// Presiona botos "Busqueda por QR"
+document.getElementById('search-qr').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent default link behavior
+  document.querySelector(".inicio").style.display = "none";// Ocultar la sección 'inicio'
+  document.querySelector(".busqueda-qr").style.display = "block";// Mostrar la sección 'busqueda-qr'
+ 
+});
+
+// Presiona botos "Busqueda por patente"
+document.getElementById("search-manual").addEventListener("click", function(event) {
+  event.preventDefault(); // Evita la recarga de la página
+  document.querySelector(".inicio").style.display = "none";// Ocultar la sección 'inicio'
+  document.querySelector(".busqueda-manual").style.display = "block"; // Mostrar la sección 'busqueda-manual'
+});
+
+// Initial state
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.busqueda-qr').style.display = "none";
+    document.querySelector('.busqueda-manual').style.display = "none";
+});
+
+
 
 // Función para mostrar los resultados en pantalla
 function displayResult(decodedText) {
@@ -118,6 +143,11 @@ function startScannerWithBackCamera() {
       console.error("Error al obtener las cámaras: ", err);
   });
 }
+
+//Funcion  para limpiar input
+function clearInput() {
+  document.getElementById('manualCodeInput').value = '';
+};
 
 // Llamar a la función para iniciar el escáner con la cámara trasera
 startScannerWithBackCamera();
