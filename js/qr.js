@@ -33,7 +33,7 @@ function onScanSuccess(decodedText, decodedResult) {
 }
 
 let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
-    let minEdgePercentage = 0.7; // 70%
+    let minEdgePercentage = 0.5; // 50%
     let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
     let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
     return {
@@ -70,6 +70,13 @@ Html5Qrcode.getCameras().then(cameras => {
       // Inicializar el escáner QR con la cámara trasera
       const html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
       html5QrcodeScanner.render(onScanSuccess, backCamera.id);
+
+      // Después de renderizar el escáner, ocultamos el selector de cámara
+      const cameraSelect = document.querySelector("#reader .camera-selection");
+      if (cameraSelect) {
+        cameraSelect.remove();
+          //cameraSelect.style.display = 'none'; // También puedes usar cameraSelect.remove();
+      }
   } else {
       console.error("No se encontró la cámara trasera.");
   }
