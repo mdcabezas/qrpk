@@ -42,7 +42,7 @@ function displayResult(decodedText) {
 
         let exist = data[decodedText];
         if (exist) {
-            $resultContainer.innerHTML = `<p class="text-center">&#128512 <span class="badge text-bg-success">¡VÁLIDO!</span> &#128512</p>
+            $resultContainer.innerHTML = `<p class="text-center">&#128512 <span class="badge text-bg-success">¡AUTORIZADO!</span> &#128512</p>
                                           <table class="table table-sm">
                                             <thead>
                                               <tr class="text-center table-success">

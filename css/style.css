@@ -2,12 +2,37 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color:#F5FBFB ;
+  background-color:#e5f2f2 ;
 }
 
 .navbar{
   background-color: #ffffff;
 }
+
+.header {
+  padding: 10px; /* Ajusta el espaciado según sea necesario */
+}
+
+.a, .b {
+  margin: 0; /* Elimina márgenes para alinear mejor el texto */
+}
+
+.b{
+  font-size: 25px;
+}
+
+.btn{
+  width: 40%;
+}
+
+.table-success{
+  background-color: #77824A;
+}
+
+.results{
+  padding: 2%;
+}
+
 
 .container {
     padding: 20px;
@@ -43,7 +68,7 @@ body, html {
 
 /* Make main content take remaining height of the page */
 main {
-  min-height: calc(100vh - 50% - 50px); /* Adjust to leave space for selector and footer */
+  min-height: 60vh; margin-top: 20vh; margin-bottom: 20vh;
 }
 
 #account{
@@ -113,7 +138,7 @@ main {
   background-color: #E29D4F;
 }
 
-p{
+.c{
   position: fixed;
   bottom: 20%;
   width: 100%; /* Ocupa todo el ancho disponible */
