@@ -64,8 +64,8 @@ Html5Qrcode.getCameras().then(cameras => {
       const cameraSelect = document.querySelector("#reader #reader__dashboard");
       console.log("==>",cameraSelect, "<==")
       if (cameraSelect) {
-        cameraSelect.remove();
-          //cameraSelect.style.display = 'none'; // También puedes usar cameraSelect.remove();
+        // cameraSelect.remove();
+        cameraSelect.style.display = 'none';
       }
   } else {
       console.error("No se encontró la cámara trasera.");
