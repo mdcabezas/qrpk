@@ -102,7 +102,7 @@ $submitManualCode.addEventListener('click', handleManualInput);
 
 // Función para calcular el tamaño del cuadro QR
 let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
-    let minEdgePercentage = 0.5; // 50%
+    let minEdgePercentage = 0.7; //70%
     let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
     let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
     return {
