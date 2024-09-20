@@ -61,12 +61,12 @@ Html5Qrcode.getCameras().then(cameras => {
       html5QrcodeScanner.render(onScanSuccess);
 
       // Después de renderizar el escáner, ocultamos el selector de cámara
-      const cameraSelect = document.querySelector("#reader__dashboard_section_csr");
+      const cameraSelect = document.querySelector("#reader #reader__dashboard #reader__dashboard_section #reader__dashboard_section_csr");
       console.log("==>",cameraSelect, "<==")
-      if (cameraSelect) {
-        // cameraSelect.remove();
-        cameraSelect.style.display = 'none';
-      }
+      // if (cameraSelect) {
+      //   // cameraSelect.remove();
+      //   cameraSelect.style.display = 'none';
+      // }
   } else {
       console.error("No se encontró la cámara trasera.");
   }
