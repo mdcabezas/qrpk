@@ -6,13 +6,21 @@ const $submitManualCode = document.getElementById('submitManualCode');
 let lastResult, countResults = 0;
 const $input = document.getElementById('clearButton').addEventListener('click', clearInput);
 
+// Initial state
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('.busqueda-qr').style.display = "none";// Ocultar la sección 'busqueda-qr'
+  document.querySelector('.busqueda-manual').style.display = "none";// Ocultar la sección 'busqueda-manual'
+  document.querySelector(".disclaimer").style.display = "block";
+});
 
 // Presiona botos "Busqueda por QR"
 document.getElementById('search-qr').addEventListener('click', function(event) {
   event.preventDefault(); // Prevent default link behavior
   document.querySelector(".busqueda-manual").style.display = "none";// Ocultar la sección 'busqueda-manual'
   document.querySelector(".busqueda-qr").style.display = "block";// Mostrar la sección 'busqueda-qr'
- document.querySelector('.results').style.display = "none";// Ocultar la sección 'results'
+  document.querySelector(".head").style.display = "none";// Ocultar la sección 'head'
+ document.querySelector(".results").style.display = "none";// Ocultar la sección 'results'
+ document.querySelector(".disclaimer").style.display = "none";// Ocultar la sección 'disclaimer'
 });
 
 // Presiona botos "Busqueda por patente"
@@ -20,16 +28,10 @@ document.getElementById("search-manual").addEventListener("click", function(even
   event.preventDefault(); // Evita la recarga de la página
   document.querySelector(".busqueda-qr").style.display = "none";// Ocultar la sección 'busqueda-qr'
   document.querySelector(".busqueda-manual").style.display = "block"; // Mostrar la sección 'busqueda-manual'
-  document.querySelector('.results').style.display = "none";// Ocultar la sección 'results'
+  document.querySelector(".results").style.display = "none";// Ocultar la sección 'results'
+  document.querySelector(".disclaimer").style.display = "none";// Ocultar la sección 'disclaimer'
+  document.querySelector(".head").style.display = "block";// Mostrar la sección 'head'
 });
-
-// Initial state
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.busqueda-qr').style.display = "none";// Ocultar la sección 'busqueda-qr'
-    document.querySelector('.busqueda-manual').style.display = "none";// Ocultar la sección 'busqueda-manual'
-
-});
-
 
 
 // Función para mostrar los resultados en pantalla

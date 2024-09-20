@@ -83,6 +83,10 @@ main {
   font-weight: bold;
 }
 
+.busqueda-qr{
+height: 50%;
+}
+
 #buttonGroup {
   position: fixed;
   bottom: 5%; /* Positions it above the fixed footer */
@@ -141,13 +145,12 @@ main {
   background-color: #E29D4F;
 }
 
-.c{
+.disclaimer{
   text-align: center;
   position: fixed;
-  bottom: 20%;
+  bottom: 50%;
   width: 100%; /* Ocupa todo el ancho disponible */
-  height: 5%; /* Altura del footer */
   padding: 0;
   margin: 0;
-  font-size: 10px;
+  font-size: 20px;
 }
