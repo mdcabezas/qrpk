@@ -47,7 +47,7 @@ Html5Qrcode.getCameras().then(cameras => {
   const backCamera = cameras.find(camera => camera.label.toLowerCase().includes('back'));
   
   // Si se encuentra la cámara trasera, inicializamos el escáner con ella
-  if (true) {
+  if (!backCamera) {
       let config = {
           fps: 10,
           qrbox: qrboxFunction,
