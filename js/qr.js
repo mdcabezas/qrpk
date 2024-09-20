@@ -72,7 +72,7 @@ Html5Qrcode.getCameras().then(cameras => {
       html5QrcodeScanner.render(onScanSuccess, backCamera.id);
 
       // Después de renderizar el escáner, ocultamos el selector de cámara
-      const cameraSelect = document.querySelector("#reader .camera-selection");
+      const cameraSelect = document.querySelector("#reader #reader__dashboard");
       if (cameraSelect) {
         cameraSelect.remove();
           //cameraSelect.style.display = 'none'; // También puedes usar cameraSelect.remove();
