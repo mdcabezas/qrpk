@@ -22,7 +22,7 @@ document.getElementById('search-qr').addEventListener('click', function(event) {
   document.querySelector(".busqueda-manual").style.display = "none";// Ocultar la sección 'busqueda-manual'
   document.querySelector(".busqueda-qr").style.display = "block";// Mostrar la sección 'busqueda-qr'
   document.querySelector(".head").style.display = "none";// Ocultar la sección 'head'
- document.querySelector(".results").style.display = "none";// Ocultar la sección 'results'
+ //document.querySelector(".results").style.display = "none";// Ocultar la sección 'results'
  document.querySelector(".disclaimer").style.display = "none";// Ocultar la sección 'disclaimer'
 });
 
@@ -31,13 +31,14 @@ document.getElementById("search-manual").addEventListener("click", function(even
   event.preventDefault(); // Evita la recarga de la página
   document.querySelector(".busqueda-qr").style.display = "none";// Ocultar la sección 'busqueda-qr'
   document.querySelector(".busqueda-manual").style.display = "block"; // Mostrar la sección 'busqueda-manual'
-  document.querySelector(".results").style.display = "none";// Ocultar la sección 'results'
+  //document.querySelector(".results").style.display = "none";// Ocultar la sección 'results'
   document.querySelector(".disclaimer").style.display = "none";// Ocultar la sección 'disclaimer'
   document.querySelector(".head").style.display = "block";// Mostrar la sección 'head'
 });
 
 
 // Función para mostrar los resultados en pantalla
+/*
 function displayResult(decodedText) {
 
   document.querySelector('.results').style.display = "block";// Mostrar la sección 'results'
@@ -85,6 +86,68 @@ function displayResult(decodedText) {
         }
     }
 }
+    */
+function displayResult(decodedText) {
+  // Mostrar el modal
+  let modal = new bootstrap.Modal(document.getElementById('resultsModal'), {
+      keyboard: false
+  });
+
+  if (decodedText !== lastResult) {
+    ++countResults;
+    lastResult = decodedText;
+
+    let exist = data[decodedText];
+    let modalContent = '';
+
+    if (exist) {
+      modalContent = `
+        <p class="text-center">&#128512 <span class="badge text-bg-success">¡AUTORIZADO!</span> &#128512</p>
+        <table class="table table-sm">
+          <thead>
+            <tr class="text-center table-success">
+              <th scope="col">Patente</th>
+              <th scope="col">Congregación</th>
+              <th scope="col">Acceso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center">
+              <th scope="row">${decodedText}</th>
+              <td>${exist.cng}</td>
+              <td>${exist.rol}</td>
+            </tr>
+          </tbody>
+        </table>`;
+    } else {
+      modalContent = `
+        <p class="text-center mt-3">&#128532 <span class="badge text-bg-danger">NO HABILITADO</span> &#128532</p>
+        <table class="table table-sm">
+          <thead>
+            <tr class="text-center table-danger">
+              <th scope="col">Patente</th>
+              <th scope="col">Congregación</th>
+              <th scope="col">Acceso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center">
+              <th scope="row">${decodedText}</th>
+              <td>NO REGISTRADO</td>
+              <td>SIN AUTORIZACION</td>
+            </tr>
+          </tbody>
+        </table>`;
+    }
+
+    // Actualizar el contenido del modal
+    document.getElementById('modalResultsContainer').innerHTML = modalContent;
+
+    // Mostrar el modal
+    modal.show();
+  }
+}
+
 
 // Función que se ejecuta cuando se escanea un código QR
 function onScanSuccess(decodedText, decodedResult) {
