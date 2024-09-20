@@ -62,7 +62,12 @@ Html5Qrcode.getCameras().then(cameras => {
 
       // Después de renderizar el escáner, ocultamos el selector de cámara
       const cameraSelect = document.querySelector("#reader #reader__dashboard #reader__dashboard_section #reader__dashboard_section_csr");
-      console.log("==>",cameraSelect, "<==")
+      const spans = cameraSelect.querySelectorAll("span");
+      spans.forEach(span => {
+        console.log(span)
+        span.style.display = 'none';
+      });
+      // console.log("==>",cameraSelect, "<==")
       // if (cameraSelect) {
       //   // cameraSelect.remove();
       //   cameraSelect.style.display = 'none';
