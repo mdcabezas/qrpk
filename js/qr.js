@@ -10,28 +10,32 @@ const $input = document.getElementById('clearButton').addEventListener('click', 
 // Presiona botos "Busqueda por QR"
 document.getElementById('search-qr').addEventListener('click', function(event) {
   event.preventDefault(); // Prevent default link behavior
-  document.querySelector(".inicio").style.display = "none";// Ocultar la sección 'inicio'
+  document.querySelector(".busqueda-manual").style.display = "none";// Ocultar la sección 'busqueda-manual'
   document.querySelector(".busqueda-qr").style.display = "block";// Mostrar la sección 'busqueda-qr'
- 
+ document.querySelector('.results').style.display = "none";// Ocultar la sección 'results'
 });
 
 // Presiona botos "Busqueda por patente"
 document.getElementById("search-manual").addEventListener("click", function(event) {
   event.preventDefault(); // Evita la recarga de la página
-  document.querySelector(".inicio").style.display = "none";// Ocultar la sección 'inicio'
+  document.querySelector(".busqueda-qr").style.display = "none";// Ocultar la sección 'busqueda-qr'
   document.querySelector(".busqueda-manual").style.display = "block"; // Mostrar la sección 'busqueda-manual'
+  document.querySelector('.results').style.display = "none";// Ocultar la sección 'results'
 });
 
 // Initial state
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.busqueda-qr').style.display = "none";
-    document.querySelector('.busqueda-manual').style.display = "none";
+    document.querySelector('.busqueda-qr').style.display = "none";// Ocultar la sección 'busqueda-qr'
+    document.querySelector('.busqueda-manual').style.display = "none";// Ocultar la sección 'busqueda-manual'
+
 });
 
 
 
 // Función para mostrar los resultados en pantalla
 function displayResult(decodedText) {
+
+  document.querySelector('.results').style.display = "block";// Mostrar la sección 'results'
     if (decodedText !== lastResult) {
         ++countResults;
         lastResult = decodedText;
@@ -81,10 +85,12 @@ function displayResult(decodedText) {
 function onScanSuccess(decodedText, decodedResult) {
     console.log(decodedResult);
     displayResult(decodedText);
+ 
 }
 
 // Función para manejar la entrada manual de código
 function handleManualInput() {
+ 
     const manualCode = $manualCodeInput.value.trim().toUpperCase();
     if (manualCode) {
         displayResult(manualCode);
