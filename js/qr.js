@@ -63,6 +63,7 @@ Html5Qrcode.getCameras().then(cameras => {
       // Después de renderizar el escáner, ocultamos el selector de cámara
       const cameraSelect = document.querySelector("#reader #reader__dashboard #reader__dashboard_section #reader__dashboard_section_csr");
       const spans = cameraSelect.querySelectorAll("span");
+      console.log("==>",spans, "<==")
       spans.forEach(span => {
         console.log(span)
         span.style.display = 'none';
