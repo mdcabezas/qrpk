@@ -67,16 +67,18 @@ body, html {
   .busqueda-qr {
     min-height: 40vh; 
     margin-top: 0vh; 
-    margin-bottom: 20vh;
     text-align: center;
   }
 
 /* Make main content take remaining height of the page */
-.busqueda-manual {
+.main {
   min-height: 60vh; 
   margin-top: 20vh; 
-  margin-bottom: 20vh;
   text-align: center;
+  height: 200px;
+}
+.results{
+  margin-bottom: 20vh;
 }
 
 #account{

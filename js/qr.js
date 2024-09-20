@@ -6,6 +6,9 @@ const $submitManualCode = document.getElementById('submitManualCode');
 let lastResult, countResults = 0;
 const $input = document.getElementById('clearButton').addEventListener('click', clearInput);
 
+
+
+
 // Initial state
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.busqueda-qr').style.display = "none";// Ocultar la sección 'busqueda-qr'
