@@ -33,7 +33,7 @@ function onScanSuccess(decodedText, decodedResult) {
 }
 
 let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
-    let minEdgePercentage = 0.5; // 50%
+    let minEdgePercentage = 0.9; // 90%
     let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
     let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
     return {
@@ -41,18 +41,6 @@ let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
         height: qrboxSize
     };
 }
-
-// let config = {
-//     fps: 10,
-//     qrbox: qrboxFunction,
-//     rememberLastUsedCamera: true,
-//     // Only support camera scan type.
-//     supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
-//   };
-
-// const html5QrcodeScanner = new Html5QrcodeScanner(
-//     "reader", config, /* verbose= */ false );
-// html5QrcodeScanner.render(onScanSuccess);
 
 Html5Qrcode.getCameras().then(cameras => {
   // Filtrar para encontrar la cámara trasera
@@ -69,7 +57,8 @@ Html5Qrcode.getCameras().then(cameras => {
 
       // Inicializar el escáner QR con la cámara trasera
       const html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
-      html5QrcodeScanner.render(onScanSuccess, backCamera.id);
+      // html5QrcodeScanner.render(onScanSuccess, backCamera.id);
+      html5QrcodeScanner.render(onScanSuccess);
 
       // Después de renderizar el escáner, ocultamos el selector de cámara
       const cameraSelect = document.querySelector("#reader #reader__dashboard");
