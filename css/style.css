@@ -1,7 +1,7 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 650px;
+  height: 800px;
   background-color:#e5f2f2 ;
 }
 
@@ -80,14 +80,14 @@ body, html {
 .busqueda-qr {
   margin-top: 0vh; 
   text-align: center;
+  height: 50%;
+    
 }
 .busqueda-manual { 
   margin-top: 20vh; 
   text-align: center;
 }
-.results{
-  margin-bottom: 0vh;
-}
+
 
 #account{
   color: rgba(158, 0, 0, 0.832); 
@@ -98,9 +98,7 @@ body, html {
   font-weight: bold;
 }
 
-.busqueda-qr{
-height: 50%;
-}
+
 
 #buttonGroup {
   position: fixed;
@@ -169,3 +167,35 @@ height: 50%;
   margin: 0;
   font-size: 20px;
 }
+
+
+
+
+        /* Cambiar el tamaño del contenedor de la cámara */
+        #reader__camera_scan_region {
+          height: 400px; /* Cambiar la altura según tu necesidad */
+          width: 100%;   /* Mantener el ancho al 100% */
+          background-color: #000; /* Color de fondo si no hay cámara */
+      }
+
+      /* Si deseas limitar el tamaño general del escáner */
+      #reader {
+          max-width: 600px; /* Ancho máximo del contenedor */
+          margin: 0 auto;   /* Centrar el escáner horizontalmente */
+      }
+
+              /* Cambiar el estilo del botón "Start Scanning" */
+              #reader button {
+                background-color: #28a745; /* Color de fondo verde */
+                color: white;              /* Color de texto blanco */
+                font-size: 16px;            /* Tamaño del texto */
+                padding: 10px 20px;         /* Espaciado interno (padding) */
+                border: none;               /* Sin borde */
+                border-radius: 5px;         /* Bordes redondeados */
+                cursor: pointer;            /* Cambiar cursor al pasar sobre el botón */
+            }
+    
+            /* Cambiar estilo cuando el botón está en hover */
+            #reader button:hover {
+                background-color: #218838;  /* Un tono más oscuro de verde */
+            }
