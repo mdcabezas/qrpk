@@ -47,7 +47,7 @@ Html5Qrcode.getCameras().then(cameras => {
   const backCamera = cameras.find(camera => camera.label.toLowerCase().includes('back'));
   
   // Si se encuentra la cámara trasera, inicializamos el escáner con ella
-  if (backCamera) {
+  if (true) {
       let config = {
           fps: 10,
           qrbox: qrboxFunction,
@@ -62,6 +62,7 @@ Html5Qrcode.getCameras().then(cameras => {
 
       // Después de renderizar el escáner, ocultamos el selector de cámara
       const cameraSelect = document.querySelector("#reader #reader__dashboard");
+      console.log("==>",cameraSelect, "<==")
       if (cameraSelect) {
         cameraSelect.remove();
           //cameraSelect.style.display = 'none'; // También puedes usar cameraSelect.remove();
