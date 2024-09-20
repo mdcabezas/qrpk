@@ -42,14 +42,37 @@ let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
     };
 }
 
-let config = {
-    fps: 10,
-    qrbox: qrboxFunction,
-    rememberLastUsedCamera: true,
-    // Only support camera scan type.
-    supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
-  };
+// let config = {
+//     fps: 10,
+//     qrbox: qrboxFunction,
+//     rememberLastUsedCamera: true,
+//     // Only support camera scan type.
+//     supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
+//   };
 
-const html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader", config, /* verbose= */ false );
-html5QrcodeScanner.render(onScanSuccess);
+// const html5QrcodeScanner = new Html5QrcodeScanner(
+//     "reader", config, /* verbose= */ false );
+// html5QrcodeScanner.render(onScanSuccess);
+
+Html5Qrcode.getCameras().then(cameras => {
+  // Filtrar para encontrar la cámara trasera
+  const backCamera = cameras.find(camera => camera.label.toLowerCase().includes('back'));
+  
+  // Si se encuentra la cámara trasera, inicializamos el escáner con ella
+  if (backCamera) {
+      let config = {
+          fps: 10,
+          qrbox: qrboxFunction,
+          rememberLastUsedCamera: true,
+          supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
+      };
+
+      // Inicializar el escáner QR con la cámara trasera
+      const html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
+      html5QrcodeScanner.render(onScanSuccess, backCamera.id);
+  } else {
+      console.error("No se encontró la cámara trasera.");
+  }
+}).catch(err => {
+  console.error("Error al obtener las cámaras: ", err);
+});
