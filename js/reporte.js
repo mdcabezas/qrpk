@@ -42,7 +42,7 @@ document.getElementById('enviarBtn').addEventListener('click', function () {
 
     // Crear el string en el formato solicitado
     let reporte = `
-#######################################
+########################
 ${tituloReporte}
 ---------------------------------------
 Sector: ${sectorEstacionamiento}
