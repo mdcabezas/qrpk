@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <script src="https://unpkg.com/html5-qrcode" defer></script>
+   <script src="./js/camara.js" defer></script>
    <link href="./css/reset.css" rel="stylesheet">
    <title>Estacionamiento | Asamblea Regional Curico 2024</title>
    <!-- Google Icons -->
@@ -49,7 +49,7 @@
            </div>
        </section>
 
-<!-- Modal -->
+<!-- Modal resultado escaner -->
 <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -63,8 +63,97 @@
       </div>
     </div>
   </div>
-  
 
+
+  <!-- Modal para reporte-->
+  <div class="modal fade" id="reporteModal" tabindex="-1" aria-labelledby="reporteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reporteModalLabel">Reporte de incidente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario -->
+                <form id="reporteForm">
+                    <div class="mb-3">
+                       
+                        <select class="form-select" id="tituloReporte" required>
+                            <option selected disabled value="">Seleccione tipo de incidente...</option>
+                            <option value="Patente no registrada">Patente no registrada</option>
+                            <option value="Vehículo con problemas">Vehículo con problemas</option>
+                            <option value="Accidente">Accidente</option>
+                            <option value="Robo">Robo</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                       
+                        <select class="form-select" id="sectorEstacionamiento" required>
+                            <option selected disabled value="">Seleccione sector...</option>
+                            <option value="Necesidades especiales">Necesidades especiales</option>
+                            <option value="Media luna">Media luna</option>
+                            <option value="Sector oriente">Sector oriente</option>
+                            <option value="Sector sur">Sector sur</option>
+                            <option value="Sector norte">Sector norte</option>
+                        </select>
+                    </div>
+
+                    <!-- Inputs adicionales para "Patente no registrada" -->
+                    <div id="extraFields" style="display: none;">
+                        <div class="mb-3">
+                 
+                            <input type="text" class="form-control" id="patente" placeholder="Patente">
+                        </div>
+                        <div class="mb-3">
+                      
+                            <input type="text" class="form-control" id="congregacion" placeholder="Congregación">
+                        </div>
+                        <div class="mb-3">
+               
+                            <input type="text" class="form-control" id="nombreConductor" placeholder="Nombre del Conductor">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                
+                        <textarea class="form-control" id="descripcion" placeholder="Descripción" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                 
+                        <input type="text" class="form-control" id="nombreVoluntario" placeholder="Nombre del Voluntario" required>
+                    </div>
+                    
+                    <button type="button" class="btn btn-success" id="enviarBtn">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+<!-- Modal llamada emergencia-->
+<div class="modal fade" id="callModal" tabindex="-1" aria-labelledby="callModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="callModalLabel">Servicios de Emergencia</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Presiona un servicio para llamar:</p>
+                <div class="d-grid gap-2">
+                    <!-- Botón para llamar al número 1 -->
+                    <a href="tel:1310" class="btn btn-primary">Ambulancia</a>
+                    <!-- Botón para llamar al número 2 -->
+                    <a href="tel:1320" class="btn btn-danger">Bomberos</a>
+                    <!-- Botón para llamar al número 3 -->
+                    <a href="tel:1330" class="btn btn-success">Carabineros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     
   <!-- Google Icons 
        <section class="results">
@@ -96,15 +185,16 @@
             <a>Escanear Codigo</a>
          </button>
 
-         <button id="create" type="button" class="btn button-active">
+       
+         <button id="create" type="button" class="btn button-active" data-bs-toggle="modal" data-bs-target="#reporteModal">
             <span class="material-symbols-outlined">edit_note</span>
-            <a href="https://wa.me/56976684290?text=Reporte%20de%20estacionamiento%20necesidades%20especiales"
-               target="_blank" style="color: rgb(0, 0, 0); text-decoration: none;">Reportar</a>
+            <a target="_blank" style="color: rgb(0, 0, 0); text-decoration: none;">Reportar</a>
          </button>
 
-         <button id="account" type="button" class="btn button-active">
+
+         <button id="account" type="button" class="btn button-active" data-bs-toggle="modal" data-bs-target="#callModal" >
             <span class="material-symbols-outlined">call_quality</span>
-            <a href="tel:133" style="color: rgba(158, 0, 0, 0.832); text-decoration: none; font-weight: bold;">Emergencia</a>
+            <a style="color: rgba(158, 0, 0, 0.832); text-decoration: none; font-weight: bold;">Emergencia</a>
          </button>
       </seccion>
 
@@ -121,6 +211,7 @@
 
    <script src="./js/data.js" type="module" defer></script>
    <script src="./js/qr.js" type="module" defer></script>
+   <script src="./js/reporte.js" type="module" defer></script>
 
 
 <!-- Bootstrap JS -->

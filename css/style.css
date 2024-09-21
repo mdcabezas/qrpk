@@ -1,97 +1,105 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 800px;
-  background-color:#e5f2f2 ;
+  background-color: #e5f2f2;
 }
 
-.navbar{
+.navbar {
   background-color: #ffffff;
 }
 
 .header {
-  padding: 10px; /* Ajusta el espaciado según sea necesario */
+  padding: 10px;
+  /* Ajusta el espaciado según sea necesario */
 }
 
-.a, .b {
-  margin: 0; /* Elimina márgenes para alinear mejor el texto */
+.a,
+.b {
+  margin: 0;
+  /* Elimina márgenes para alinear mejor el texto */
 }
 
-.b{
+.b {
   font-size: 35px;
 }
 
-.btn{
+.btn {
   width: 40%;
   font-size: 15px;
 }
 
-.table-success{
+.table-success {
   background-color: #77824A;
 }
 
-.results{
+.results {
   padding: 2%;
 }
 
 
 .container {
-    padding: 20px;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
-  .card {
-    display: inline-block; /* Allows cards to align properly */
-    margin: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    width: 300px; /* Adjust as needed */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .card img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .card-body {
-    text-align: center;
-  }
+  padding: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.card {
+  display: inline-block;
+  /* Allows cards to align properly */
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  width: 300px;
+  /* Adjust as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.card-body {
+  text-align: center;
+}
 
 
 /* Make main content take remaining height of the page */
 .main {
-  min-height: 50vh; 
-  margin-top: 0vh; 
+  min-height: 50vh;
+  margin-top: 0vh;
   text-align: center;
   height: 200px;
 }
+
 .busqueda-qr {
-  margin-top: 0vh; 
+  margin-top: 0vh;
   text-align: center;
   height: 40%;
-    
+
 }
-.busqueda-manual { 
-  margin-top: 20vh; 
+
+.busqueda-manual {
+  margin-top: 20vh;
   text-align: center;
 }
 
 
-#account{
-  color: rgba(158, 0, 0, 0.832); 
+#account {
+  color: rgba(158, 0, 0, 0.832);
   text-decoration: none;
 }
 
-#search-qr{
+#search-qr {
   font-weight: bold;
 }
 
@@ -99,15 +107,18 @@ body, html {
 
 #buttonGroup {
   position: fixed;
-  bottom: 5%; /* Positions it above the fixed footer */
+  bottom: 5%;
+  /* Positions it above the fixed footer */
   left: 0;
   right: 0;
   width: 100%;
   display: flex;
   justify-content: space-around;
   padding: 0px;
-  background-color: rgb(255, 255, 255); /* Adjust as needed */
-  z-index: 1000; /* Ensure it's above the footer */
+  background-color: rgb(255, 255, 255);
+  /* Adjust as needed */
+  z-index: 1000;
+  /* Ensure it's above the footer */
   color: #000;
   font-size: 10px;
 }
@@ -117,7 +128,7 @@ body, html {
 
 /* Para que las secciones ocultas no ocupen espacio */
 .hidden {
-    display: none;
+  display: none;
 }
 
 
@@ -125,27 +136,36 @@ body, html {
 .footer {
   position: fixed;
   bottom: 0;
-  width: 100%; /* Ocupa todo el ancho disponible */
-  height: 5%; /* Altura del footer */
+  width: 100%;
+  /* Ocupa todo el ancho disponible */
+  height: 5%;
+  /* Altura del footer */
   padding: 0;
   margin: 0;
 }
 
 .row {
-  display: flex; /* Para asegurar que las columnas se distribuyan horizontalmente */
-  width: 100%; /* Asegura que la fila ocupe todo el ancho */
-  height: 100%; /* Hace que la fila ocupe todo el alto del footer */
+  display: flex;
+  /* Para asegurar que las columnas se distribuyan horizontalmente */
+  width: 100%;
+  /* Asegura que la fila ocupe todo el ancho */
+  height: 100%;
+  /* Hace que la fila ocupe todo el alto del footer */
 }
 
 .col-md-4 {
-  flex: 1; /* Las columnas ocupan el mismo espacio horizontalmente */
-  height: 100%; /* Para que cada columna ocupe el alto completo */
-  padding: 0; /* Sin padding extra en las columnas */
-  height: 100%; /* Hace que la fila ocupe todo el alto del footer */
+  flex: 1;
+  /* Las columnas ocupan el mismo espacio horizontalmente */
+  height: 100%;
+  /* Para que cada columna ocupe el alto completo */
+  padding: 0;
+  /* Sin padding extra en las columnas */
+  height: 100%;
+  /* Hace que la fila ocupe todo el alto del footer */
 }
 
 .azul {
-  background-color: #64ABB1 ;
+  background-color: #64ABB1;
 }
 
 .verde {
@@ -156,11 +176,12 @@ body, html {
   background-color: #E29D4F;
 }
 
-.disclaimer{
+.disclaimer {
   text-align: center;
   position: fixed;
   bottom: 50%;
-  width: 100%; /* Ocupa todo el ancho disponible */
+  width: 100%;
+  /* Ocupa todo el ancho disponible */
   padding: 0;
   margin: 0;
   font-size: 20px;
@@ -169,31 +190,44 @@ body, html {
 
 
 
-        /* Cambiar el tamaño del contenedor de la cámara */
-        #reader__camera_scan_region {
-          height: 400px; /* Cambiar la altura según tu necesidad */
-          width: 100%;   /* Mantener el ancho al 100% */
-          background-color: #000; /* Color de fondo si no hay cámara */
-      }
+/* Cambiar el tamaño del contenedor de la cámara */
+#reader__camera_scan_region {
+  height: 400px;
+  /* Cambiar la altura según tu necesidad */
+  width: 100%;
+  /* Mantener el ancho al 100% */
+  background-color: #000;
+  /* Color de fondo si no hay cámara */
+}
 
-      /* Si deseas limitar el tamaño general del escáner */
-      #reader {
-          max-width: 600px; /* Ancho máximo del contenedor */
-          margin: 0 auto;   /* Centrar el escáner horizontalmente */
-      }
+/* Si deseas limitar el tamaño general del escáner */
+#reader {
+  max-width: 600px;
+  /* Ancho máximo del contenedor */
+  margin: 0 auto;
+  /* Centrar el escáner horizontalmente */
+}
 
-              /* Cambiar el estilo del botón "Start Scanning" */
-              #reader button {
-                background-color: #28a745; /* Color de fondo verde */
-                color: white;              /* Color de texto blanco */
-                font-size: 16px;            /* Tamaño del texto */
-                padding: 10px 20px;         /* Espaciado interno (padding) */
-                border: none;               /* Sin borde */
-                border-radius: 5px;         /* Bordes redondeados */
-                cursor: pointer;            /* Cambiar cursor al pasar sobre el botón */
-            }
-    
-            /* Cambiar estilo cuando el botón está en hover */
-            #reader button:hover {
-                background-color: #218838;  /* Un tono más oscuro de verde */
-            }
+/* Cambiar el estilo del botón "Start Scanning" */
+#reader button {
+  background-color: #28a745;
+  /* Color de fondo verde */
+  color: white;
+  /* Color de texto blanco */
+  font-size: 16px;
+  /* Tamaño del texto */
+  padding: 10px 20px;
+  /* Espaciado interno (padding) */
+  border: none;
+  /* Sin borde */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  cursor: pointer;
+  /* Cambiar cursor al pasar sobre el botón */
+}
+
+/* Cambiar estilo cuando el botón está en hover */
+#reader button:hover {
+  background-color: #218838;
+  /* Un tono más oscuro de verde */
+}
