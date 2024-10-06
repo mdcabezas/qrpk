@@ -223,5 +223,13 @@ function clearInput() {
   document.getElementById('manualCodeInput').value = '';
 };
 
+document.getElementById('closeModalBtn').addEventListener('click', function() {
+  // Forzar el cierre del modal manualmente usando Bootstrap Modal API
+  const modal = bootstrap.Modal.getInstance(document.getElementById('resultsModal'));
+  if (modal) {
+      modal.hide(); // Cerrar el modal forzadamente
+  }
+});
+
 // Llamar a la función para iniciar el escáner con la cámara trasera
 startScannerWithBackCamera();

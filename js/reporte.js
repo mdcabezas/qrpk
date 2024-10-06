@@ -63,7 +63,16 @@ Nombre del conductor: ${nombreConductor}
 
     // Redirigir a WhatsApp con el mensaje
     const mensajeWhatsapp = encodeURIComponent(reporte);
-    const whatsappURL = `https://wa.me/56947499964?text=${mensajeWhatsapp}`;
+    //const whatsappURL = `https://wa.me/56947499964?text=${mensajeWhatsapp}`;
+
+
+
+
+  // Generar el enlace de WhatsApp con el mensaje
+  const groupId = "C5hbuIbQQ1eL5ZLMDstDCB"; // Inserta aquí el ID del grupo de WhatsApp
+  const whatsappURL = `https://wa.me/send?phone=&text=${mensajeWhatsapp}&group_id=${groupId}`;
+
+
 
     // Redirigir al usuario a WhatsApp
     window.open(whatsappURL, '_blank');
