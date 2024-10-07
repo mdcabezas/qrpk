@@ -26,8 +26,9 @@ html {
 }
 
 .btn {
-  width: 40%;
+  width: 45%;
   font-size: 15px;
+  padding: 7px;
 }
 
 .table-success {
@@ -46,17 +47,17 @@ html {
 .text-center {
   text-align: center;
 }
-
+/* 
 .card {
   display: inline-block;
-  /* Allows cards to align properly */
+  
   margin: 20px;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
   width: 300px;
-  /* Adjust as needed */
+  
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -71,7 +72,7 @@ html {
 .card-body {
   text-align: center;
 }
-
+*/
 
 /* Make main content take remaining height of the page */
 .main {

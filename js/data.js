@@ -26,7 +26,6 @@ const c = {
   18: "Los Molinos-Marchigue",
   19: "Oeste.San Vicente"
 };
-
 export const data = {
   TKKG44: { cng: c[1], rol: r[2] },
   SS7641: { cng: c[1], rol: r[2] },
@@ -79,5 +78,23 @@ export const data = {
   HFFL63: { cng: c[12], rol: r[3] },
   TFGV68: { cng: c[12], rol: r[3] },
   XC5620: { cng: c[13], rol: r[4] },
-  JHFD10: { cng: c[13], rol: r[4] }
+  JHFD10: { cng: c[13], rol: r[4] },
+  DE7647: { cng: c[15], rol: r[2] },
+  BPRP58: { cng: c[9], rol: r[2] }, 
+  HVFW74: { cng: c[9], rol: r[2] },  
+  ED1104: { cng: c[9], rol: r[2] },  
+  LLFW93: { cng: c[9], rol: r[2] }, 
+  YP2652: { cng: c[9], rol: r[2] },   
+  KTJT12: { cng: c[17], rol: r[2] }, 
+  FPVD47: { cng: c[17], rol: r[2] },  
+  UG6869: { cng: c[6], rol: r[2] },   
+  PRFT57: { cng: c[18], rol: r[2] },  
+  CSVD61: { cng: c[15], rol: r[1] },  
+  RDWY39: { cng: c[12], rol: r[1] }, 
+  FHPP57: { cng: c[12], rol: r[1] },  
+  BYGC97: { cng: c[12], rol: r[1] },  
+  KHSS22: { cng: c[12], rol: r[1] },  
+  GLKF40: { cng: c[17], rol: r[1] },  
+  JPTH77: { cng: c[1], rol: r[1] },   
+  JKGT75: { cng: c[17], rol: r[1] }   
 };
