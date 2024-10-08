@@ -1,19 +1,221 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://unpkg.com/html5-qrcode" defer></script>
-    <title>QR</title>
-    <script src="./js/data.js" type="module" defer></script>
-    <script src="./js/qr.js" type="module" defer></script>
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="./js/camara.js" defer></script>
+   <link href="./css/reset.css" rel="stylesheet">
+   <title>Estacionamiento | Asamblea Regional Curico 2024</title>
+   <!-- Google Icons -->
+   <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+   <link href="./css/bootstrap.min.css" rel="stylesheet">
+   
+   <link href="./css/style.css" rel="stylesheet">
 </head>
+
 <body>
-  <div class="container">
-    <div id="reader"></div>
-    <div id="results"></div>
+
+   <header class="head">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+          <div class="container-fluid">
+              <div class="header">
+                  <p class="a">Asamblea Regional Curico 2024</p>
+                  <p class="b">Estacionamiento</p>
+              </div>
+          </div>
+      </nav>
+  </header>
+  
+  <main class="container main d-flex flex-column" >
+   <div class="row justify-content-center">
+       <section class="busqueda-qr">
+           <div class="col-12 text-center">
+               <div id="reader"></div>
+           </div>
+       </section>
+
+       <section class="busqueda-manual">
+           <div class="col-12">
+               <div class="input-group mb-2">
+                  <input type="text" id="manualCodeInput" class="form-control" placeholder="Ingrese Patente manualmente" aria-label="Ingrese Patente" aria-describedby="basic-addon2" oninput="validateInput()">
+               </div>
+               <div class="input-group-append d-flex justify-content-between">
+                   <button class="btn btn-success" id="submitManualCode" type="button">Verificar</button>
+                   <button class="btn btn-secondary" id="clearButton" type="button" onclick="clearInput()">Limpiar</button>
+               </div>
+           </div>
+       </section>
+
+<!-- Modal resultado escaner -->
+<div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="resultsModalLabel">Resultados de la busqueda</h5>
+          <button type="button" id="closeModalBtn" class="btn-close" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="modalResultsContainer"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
+     
+         
+
+
+  <!-- Modal para reporte-->
+  <div class="modal fade" id="reporteModal" tabindex="-1" aria-labelledby="reporteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reporteModalLabel">Reportar incidente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario -->
+                <form id="reporteForm">
+                    <div class="mb-3">
+                       
+                        <select class="form-select" id="tituloReporte" required>
+                            <option selected disabled value="">Seleccione tipo de incidente...</option>
+                            <option value="Patente no registrada">Patente no registrada</option>
+                            <option value="Vehículo con problemas">Vehículo con problemas</option>
+                            <option value="Accidente">Accidente</option>
+                            <option value="Robo">Robo</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                       
+                        <select class="form-select" id="sectorEstacionamiento" required>
+                            <option selected disabled value="">Seleccione sector...</option>
+                            <option value="Necesidades especiales">Necesidades especiales</option>
+                            <option value="Media luna">Media luna</option>
+                            <option value="Sector oriente">Sector oriente</option>
+                            <option value="Sector sur">Sector sur</option>
+                            <option value="Sector norte">Sector norte</option>
+                        </select>
+                    </div>
+
+                    <!-- Inputs adicionales para "Patente no registrada" -->
+                    <div id="extraFields" style="display: none;">
+                        <div class="mb-3">
+                 
+                            <input type="text" class="form-control" id="patente" placeholder="Patente">
+                        </div>
+                        <div class="mb-3">
+                      
+                            <input type="text" class="form-control" id="congregacion" placeholder="Congregación">
+                        </div>
+                        <div class="mb-3">
+               
+                            <input type="text" class="form-control" id="nombreConductor" placeholder="Nombre del Conductor">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                
+                        <textarea class="form-control" id="descripcion" placeholder="Descripción" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                 
+                        <input type="text" class="form-control" id="nombreVoluntario" placeholder="Nombre del Voluntario" required>
+                    </div>
+                    
+                    <button type="button" class="btn btn-success" id="enviarBtn">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+<!-- Modal llamada emergencia-->
+<div class="modal fade" id="callModal" tabindex="-1" aria-labelledby="callModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="callModalLabel">Servicios de Emergencia</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Presiona un servicio para llamar:</p>
+                <div class="d-grid gap-3">
+                    <!-- Botón para llamar al número 1 -->
+                    <a href="tel:1310" class="btn btn-primary">Ambulancia</a>
+                    <!-- Botón para llamar al número 2 -->
+                    <a href="tel:1320" class="btn btn-danger">Bomberos</a>
+                    <!-- Botón para llamar al número 3 -->
+                    <a href="tel:1330" class="btn btn-success">Carabineros</a>
+                     <!-- Botón para llamar al número 4 -->
+                     <a href="tel:1330" class="btn btn-secondary">Superintendencia estacionamiento</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+   </div>
+</main>
+
+
+   <p class="disclaimer">
+      Aplicación no comercial. Uso exclusivo dpto "Estacionamiento".<br>
+      No registra información ni almacena imágenes.
+   </p>
+
+   <!-- Bottom Nav Bar -->
+   
+      <seccion id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
+
+         <button id="search-manual" type="button" class="btn  button-active">
+            <span class="material-symbols-outlined">car_crash</span>
+            <a >Ingreso Manual</a>
+         </button>
+
+         <button id="search-qr" type="button" class="btn button-active">
+            <span class="material-symbols-outlined">qr_code_scanner</span>
+            <a>Escanear Codigo</a>
+         </button>
+
+       
+         <button id="create" type="button" class="btn button-active" data-bs-toggle="modal" data-bs-target="#reporteModal">
+            <span class="material-symbols-outlined">edit_note</span>
+            <a target="_blank" style="color: rgb(0, 0, 0); text-decoration: none;">Reportar</a>
+         </button>
+
+
+         <button id="account" type="button" class="btn button-active" data-bs-toggle="modal" data-bs-target="#callModal" >
+            <span class="material-symbols-outlined">call_quality</span>
+            <a style="color: rgba(158, 0, 0, 0.832); text-decoration: none; font-weight: bold;">Emergencia</a>
+         </button>
+      </seccion>
+
+    
+      <footer class="footer container-fluid">
+         <div class="row">
+             <div class="col-md-4 azul"></div>
+             <div class="col-md-4 verde"></div>
+             <div class="col-md-4 amarillo"></div>
+         </div>
+     </footer>
+
+   <!-- Bootstrap JS and dependencies -->
+
+   <script src="./js/data.js" type="module" defer></script>
+   <script src="./js/qr.js" type="module" defer></script>
+   <script src="./js/reporte.js" type="module" defer></script>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
+
 </html>
