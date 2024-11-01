@@ -157,13 +157,26 @@ function onScanSuccess(decodedText, decodedResult) {
 }
 
 // Función para manejar la entrada manual de código
-function handleManualInput() {
+/*function handleManualInput() {
  
     const manualCode = $manualCodeInput.value.trim().toUpperCase();
     if (manualCode) {
         displayResult(manualCode);
     }
+}*/
+function handleManualInput() {
+  // Obtiene el valor del input, eliminando espacios y convirtiendo a mayúsculas
+  const manualCode = $manualCodeInput.value.trim().toUpperCase();
+  
+  // Formatea el texto: elimina espacios, guiones y caracteres no alfanuméricos
+  const formattedCode = manualCode.replace(/[-\s]/g, '').replace(/[^a-zA-Z0-9]/g, '');
+  
+  // Verifica si el código formateado no está vacío
+  if (formattedCode) {
+      displayResult(formattedCode);
+  }
 }
+
 
 // Asociar la función de manejar la entrada manual al botón
 $submitManualCode.addEventListener('click', handleManualInput);
