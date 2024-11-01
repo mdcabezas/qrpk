@@ -42,31 +42,31 @@ document.getElementById('enviarBtn').addEventListener('click', function () {
 
     // Crear el string en el formato solicitado
     let reporte = `
-================
+*________________________*
 *${tituloReporte}*
-================
+*________________________*
 *Sector*
 ${sectorEstacionamiento}
-------------------------
+________________________
 *Descripción*
 ${descripcion}
-------------------------
+________________________
 *Nombre voluntario*
 ${nombreVoluntario}
-------------------------`;
+________________________`;
 
     // Si es "Patente no registrada", agregar los campos adicionales
     if (tituloReporte === 'Patente no registrada') {
         reporte += `
 *Patente*
 ${patente}
----------------------
+________________________
 *Congregación*
 ${congregacion}
----------------------
+________________________
 *Nombre conductor*
 ${nombreConductor}
----------------------`;
+________________________`;
     }
 
     // Redirigir a WhatsApp con el mensaje
