@@ -43,28 +43,28 @@ document.getElementById('enviarBtn').addEventListener('click', function () {
     // Crear el string en el formato solicitado
     let reporte = `
 ================
-⚠️ *${tituloReporte}*
----------------------
-*Sector:* 
+*${tituloReporte}*
+================
+*Sector*
 ${sectorEstacionamiento}
----------------------
-*Descripción:* 
+------------------------
+*Descripción*
 ${descripcion}
----------------------
-*Nombre voluntario:* 
+------------------------
+*Nombre voluntario*
 ${nombreVoluntario}
----------------------`;
+------------------------`;
 
     // Si es "Patente no registrada", agregar los campos adicionales
     if (tituloReporte === 'Patente no registrada') {
         reporte += `
-*Patente:* 
+*Patente*
 ${patente}
 ---------------------
-*Congregación:* 
+*Congregación*
 ${congregacion}
 ---------------------
-*Nombre del conductor:* 
+*Nombre conductor*
 ${nombreConductor}
 ---------------------`;
     }
@@ -72,15 +72,6 @@ ${nombreConductor}
     // Redirigir a WhatsApp con el mensaje
     const mensajeWhatsapp = encodeURIComponent(reporte);
     const whatsappURL = `https://wa.me/56947499964?text=${mensajeWhatsapp}`;
-
-
-
-
-  // Generar el enlace de WhatsApp con el mensaje
-  //const groupId = "C5hbuIbQQ1eL5ZLMDstDCB"; // Inserta aquí el ID del grupo de WhatsApp
-  //const whatsappURL = `https://wa.me/send?phone=&text=${mensajeWhatsapp}&group_id=${groupId}`;
-
-
 
     // Redirigir al usuario a WhatsApp
     window.open(whatsappURL, '_blank');
