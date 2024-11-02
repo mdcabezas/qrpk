@@ -120,8 +120,7 @@ function handleManualInput() {
   }
 
   // Muestra el resultado
-  displayResult(formattedCode);
-
+  displayResult(manualCode);
 }
 
 // Borrar contenido del input manual
