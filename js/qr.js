@@ -1,13 +1,11 @@
 import { data } from './data.js';
 
-const $resultContainer = document.getElementById('results');
+// const $resultContainer = document.getElementById('results');
 const $manualCodeInput = document.getElementById('manualCodeInput');
 const $submitManualCode = document.getElementById('submitManualCode');
+const $clearButton = document.getElementById('clearButton');
 let lastResult, countResults = 0;
-const $input = document.getElementById('clearButton').addEventListener('click', clearInput);
-
-
-
+// const $input = document.getElementById('clearButton').addEventListener('click', clearInput);
 
 // Initial state
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector(".disclaimer").style.display = "block";
 });
 
-// Presiona botos "Busqueda por QR"
+// Presiona boton "Busqueda por QR"
 document.getElementById('search-qr').addEventListener('click', function(event) {
   event.preventDefault(); // Prevent default link behavior
   document.querySelector(".busqueda-manual").style.display = "none";// Ocultar la sección 'busqueda-manual'
@@ -24,6 +22,8 @@ document.getElementById('search-qr').addEventListener('click', function(event) {
   document.querySelector(".head").style.display = "none";// Ocultar la sección 'head'
  //document.querySelector(".results").style.display = "none";// Ocultar la sección 'results'
  document.querySelector(".disclaimer").style.display = "none";// Ocultar la sección 'disclaimer'
+ // Inicia cámara
+ startScannerWithBackCamera();
 });
 
 // Presiona botos "Busqueda por patente"
@@ -36,57 +36,6 @@ document.getElementById("search-manual").addEventListener("click", function(even
   document.querySelector(".head").style.display = "block";// Mostrar la sección 'head'
 });
 
-
-// Función para mostrar los resultados en pantalla
-/*
-function displayResult(decodedText) {
-
-  document.querySelector('.results').style.display = "block";// Mostrar la sección 'results'
-    if (decodedText !== lastResult) {
-        ++countResults;
-        lastResult = decodedText;
-
-        let exist = data[decodedText];
-        if (exist) {
-            $resultContainer.innerHTML = `<p class="text-center">&#128512 <span class="badge text-bg-success">¡AUTORIZADO!</span> &#128512</p>
-                                          <table class="table table-sm">
-                                            <thead>
-                                              <tr class="text-center table-success">
-                                                <th scope="col">Patente</th>
-                                                <th scope="col">Congregación</th>
-                                                <th scope="col">Acceso</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr class="text-center">
-                                                <th scope="row">${decodedText}</th>
-                                                <td>${exist.cng}</td>
-                                                <td>${exist.rol}</td>
-                                              </tr>
-                                            </tbody>
-                                          </table>`;
-        } else {
-            $resultContainer.innerHTML = `<p class="text-center mt-3">&#128532 <span class="badge text-bg-danger">NO HABILITADO</span> &#128532</p>
-            <table class="table table-sm">
-            <thead>
-              <tr class="text-center table-danger">
-                <th scope="col">Patente</th>
-                <th scope="col">Congregación</th>
-                <th scope="col">Acceso</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-center">
-                <th scope="row">${decodedText}</th>
-                <td>NO REGISTRADO</td>
-                <td>SIN AUTORIZACION</td>
-              </tr>
-            </tbody>
-          </table>`;
-        }
-    }
-}
-    */
 function displayResult(decodedText) {
   // Mostrar el modal
   let modal = new bootstrap.Modal(document.getElementById('resultsModal'), {
@@ -150,33 +99,33 @@ function displayResult(decodedText) {
 
 
 // Función que se ejecuta cuando se escanea un código QR
-function onScanSuccess(decodedText, decodedResult) {
-    console.log(decodedResult);
-    displayResult(decodedText);
- 
+function onScanSuccess(decodedText) {
+    displayResult(formattedCode(decodedText));
+}
+
+  // Formatea el texto: elimina espacios, guiones y caracteres no alfanuméricos
+function formattedCode(text){
+  return text.replace(/[-\s\W_]+/g, '').trim().toUpperCase();
 }
 
 // Función para manejar la entrada manual de código
-/*function handleManualInput() {
- 
-    const manualCode = $manualCodeInput.value.trim().toUpperCase();
-    if (manualCode) {
-        displayResult(manualCode);
-    }
-}*/
 function handleManualInput() {
-  // Obtiene el valor del input, eliminando espacios y convirtiendo a mayúsculas
-  const manualCode = $manualCodeInput.value.trim().toUpperCase();
-  
-  // Formatea el texto: elimina espacios, guiones y caracteres no alfanuméricos
-  const formattedCode = manualCode.replace(/[-\s]/g, '').replace(/[^a-zA-Z0-9]/g, '');
+  // Obtiene el valor del input y lo fromatea
+  const manualCode = formattedCode($manualCodeInput.value);
   
   // Verifica si el código formateado no está vacío
-  if (formattedCode) {
-      displayResult(formattedCode);
+  if (!manualCode){
+    alert("¡Por favor Ingrese una Patente!");
+    return;  
   }
+
+  // Muestra el resultado
+  displayResult(formattedCode);
+
 }
 
+// Borrar contenido del input manual
+$clearButton.addEventListener('click', clearInput)
 
 // Asociar la función de manejar la entrada manual al botón
 $submitManualCode.addEventListener('click', handleManualInput);
@@ -233,7 +182,7 @@ function startScannerWithBackCamera() {
 
 //Funcion  para limpiar input
 function clearInput() {
-  document.getElementById('manualCodeInput').value = '';
+  $manualCodeInput.value = '';
 };
 
 document.getElementById('closeModalBtn').addEventListener('click', function() {
@@ -245,4 +194,4 @@ document.getElementById('closeModalBtn').addEventListener('click', function() {
 });
 
 // Llamar a la función para iniciar el escáner con la cámara trasera
-startScannerWithBackCamera();
+// startScannerWithBackCamera();
