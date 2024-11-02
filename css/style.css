@@ -204,3 +204,7 @@ html {
   background-color: #218838;
   /* Un tono más oscuro de verde */
 }
+
+.uppercase{
+  text-transform: uppercase; /* Convierte el texto a mayúsculas */
+}
