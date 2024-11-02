@@ -121,6 +121,7 @@ function handleManualInput() {
 
   // Muestra el resultado
   displayResult(manualCode);
+  clearInput();
 }
 
 // Borrar contenido del input manual
