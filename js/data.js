@@ -6,7 +6,6 @@ const r = {
   5: "Primeros Auxilios"
 };
 
-
   const c = {
     1: "Valle Colchagua",
     2: "Licantén",
