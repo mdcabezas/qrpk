@@ -315,6 +315,8 @@ export const data = {
   BKPB65: { cng: c[17], rol: r[2] },
   CYGC66: { cng: c[34], rol: r[2] },
   HHGW25: { cng: c[34], rol: r[2] },
-  WG3943: { cng: c[61], rol: r[1] }
+  WG3943: { cng: c[61], rol: r[1] },
+  KCGL54: { cng: c[43], rol: r[2] },
+  HBXR53: { cng: c[26], rol: r[2] }
 };
 
